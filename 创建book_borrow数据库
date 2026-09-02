@@ -1,3 +1,32 @@
 #创建数据库
 CRATE DATABASE book_borrow DEFAULT
 CHARACTER SET utf8mb4;
+
+#依次创建图书表、读者表、阅读借记表
+-- 图书表
+CREATE TABLE book (
+    book_id INT PRIMARY KEY AUTO_INCREMENT,
+    book_name VARCHAR(200) NOT NULL,
+    author VARCHAR(100),
+    stock INT DEFAULT 0,
+    publish_time DATE
+);
+
+-- 读者表
+CREATE TABLE reader (
+    reader_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    phone VARCHAR(20),
+    class_name VARCHAR(50)
+);
+
+-- 借阅记录表
+CREATE TABLE borrow_record (
+    record_id INT PRIMARY KEY AUTO_INCREMENT,
+    book_id INT,
+    reader_id INT,
+    borrow_time DATETIME DEFAULT NOW(),
+    return_time DATETIME NULL,
+    FOREIGN KEY (book_id) REFERENCES book(book_id),
+    FOREIGN KEY (reader_id) REFERENCES reader(reader_id)
+);
