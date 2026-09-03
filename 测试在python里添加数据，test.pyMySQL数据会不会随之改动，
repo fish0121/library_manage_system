@@ -1,0 +1,9 @@
+from test_import import add_book,get_all_books,add_reader,get_all_readers
+
+# 插入测试图书
+add_book("大学英语","小艾",7,"2026-3-20")
+# 插入测试读者
+add_reader("明明","17841256356","化学与生命科学1班")
+
+print(get_all_books())
+print(get_all_readers())
